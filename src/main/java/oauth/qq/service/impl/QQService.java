@@ -55,12 +55,6 @@ public class QQService implements IQQService {
                 accessToken = accessTokenObj.getAccessToken();
                 tokenExpireIn = accessTokenObj.getExpireIn();
 
-                /*
-                //通过自我调用QQ的方法获取openid和unionid
-                JSONObject jsonObject = getQQMe(accessToken);
-                String openid = jsonObject.getString("openid");
-                String unionid = jsonObject.getString("unionid");
-                */
 
                 //获取个人的头像昵称等信息
                 //获取openid
@@ -69,6 +63,12 @@ public class QQService implements IQQService {
                 //获取用户信息
                 UserInfo qzoneUserInfo = new UserInfo(accessToken, openID);
                 UserInfoBean userInfoBean = (UserInfoBean) qzoneUserInfo.getUserInfo();
+                /*
+                //通过自我调用QQ的方法获取openid和unionid
+                JSONObject jsonObject = getQQMe(accessToken);
+                String openid = jsonObject.getString("openid");
+                String unionid = jsonObject.getString("unionid");
+                */
                 com.qq.connect.utils.json.JSONObject jsonUserInfoBean = new com.qq.connect.utils.json.JSONObject(userInfoBean);
                 QQUserInfoBeanx result = new QQUserInfoBeanx(jsonUserInfoBean);
                 result.setOpenId(openID);
